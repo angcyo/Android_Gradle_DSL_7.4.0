@@ -4,7 +4,7 @@
 
 环境:
 
-```
+```groovy
 plugins {
     id 'com.android.application' version '7.4.0' apply false
     id 'com.android.library' version '7.4.0' apply false
@@ -20,7 +20,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-7.5-allt add.z
 
 ## 导入`Gradle源码`
 
-```
+```groovy
 android {
     ...
 
@@ -45,7 +45,7 @@ android {
 
 ## 导入`AGP源码`
 
-```
+```groovy
 dependencies {
     ...
     
