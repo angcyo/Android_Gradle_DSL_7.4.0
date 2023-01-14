@@ -49,7 +49,50 @@ android {
     }
 
     //输出gradle版本
-    println(gradle.gradleVersion)
+    println gradle.gradleVersion
+
+    //顶级类
+    com.android.build.gradle.AbstractAppExtension
+    com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+    com.android.build.gradle.BaseExtension
+
+    variantFilter { variant ->
+        def buildTypeName = variant.buildType*.name
+        def flavorName = variant.flavors*.name
+    }
+
+    com.android.build.api.variant.AndroidComponentsExtension
+    /*androidComponents {
+        beforeVariants {
+            println("Called with variant : ${'$'}name")
+        }
+    }*/
+    androidComponents {
+        println pluginVersion
+        def debug = selector().withBuildType("debug")
+        beforeVariants(debug) {
+            println("Called with variant : ${'$'}name")
+        }
+    }
+
+    com.android.build.gradle.internal.api.ApkVariantOutputImpl
+    com.android.build.api.variant.impl.VariantOutputConfigurationImpl
+
+    applicationVariants.all { variant ->
+        println variant.class //class com.android.build.gradle.internal.api.ApplicationVariantImpl_Decorated
+        com.android.build.gradle.internal.api.ApplicationVariantImpl //这个类点击才能跳转
+
+        //修改输出路径↓
+        variant.packageApplicationProvider
+        variant.packageApplicationProvider.get().outputDirectory.getAsFile().get() //aab无效
+
+        //修改输出文件名↓
+        //apk的输出才会走这里, aab则不会
+        variant.outputs.forEach {
+            println it.class //class com.android.build.gradle.internal.api.ApkVariantOutputImpl_Decorated
+            com.android.build.gradle.internal.api.ApkVariantOutputImpl //这个类点击才能跳转
+        }
+    }
 }
 
 dependencies {
