@@ -11,7 +11,7 @@ plugins {
     id 'org.jetbrains.kotlin.android' version '1.7.21' apply false
 }
 
-distributionUrl=https\://services.gradle.org/distributions/gradle-7.5-all.zip
+distributionUrl=https\://services.gradle.org/distributions/gradle-7.5-allt add.zip
 ```
 
 请注意`gradle-7.5-bin.zip`是不包含源码的, 需要使用`gradle-7.5-all.zip`

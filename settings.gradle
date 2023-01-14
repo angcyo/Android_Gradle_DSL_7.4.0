@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Android_Gradle_DSL_7.4.0"
-include ':app'
+include ':Android_Gradle_DSL_7.4.0'
